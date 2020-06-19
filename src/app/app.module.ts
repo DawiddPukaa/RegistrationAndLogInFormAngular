@@ -3,14 +3,23 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SignupFormComponent } from './signup-form/signup-form.component';
+import { FormsModule } from '@angular/forms';
+import { from } from 'rxjs';
+import { SinginFormComponent } from './singin-form/singin-form.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SignupFormComponent,
+    SinginFormComponent
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
