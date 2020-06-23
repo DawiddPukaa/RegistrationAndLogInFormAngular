@@ -1,33 +1,42 @@
 <p>signup-form works!</p>
-<body>
-    
 
-    <div class="row">
-        <div class="col-xs-12 col-lg-12">
-            <form (ngSubmit)="onSubmit(f)" #f="ngForm">
-                <div class="row">
-                    <div class="col-sm-12 col-md-4 formgroup">
-                        <label>Nazwa Gracza</label>
-                        <input id="nickname-inpt" type="text" class="form-control" [(ngModel)] = "nickname" name="nickname" required>
+     <div class="container">
+        <div class="jumbotron">
+            <h1>Restracja</h1>
+            <form >
+               <fieldset> 
+                    <div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">E-mail</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="E-mail">
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div> 
+                    </div>
+                    <div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Nazwa Użytkownika</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nazwa Użytkownika">
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Hasło</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Hasło">
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div><button type="button" class="btn btn-primary btn-lg btn-block">Załóż Konto</button></div>
+                    </div>
+                    <div>
+                        <div><button type="button" class="btn btn-danger btn-lg btn-block">Reset</button></div>
                     </div> 
-                    <div class="col-sm-12 col-md-4 formgroup">
-                        <label>Hasło</label>
-                        <input id="password-inpt" type="password" class="form-control" [(ngModel)]="password" name="password" required>
-                    </div>
-                    <div class="col-sm-12 col-md-4 formgroup">
-                        <label>Email</label>
-                        <input id="email-inpt" type="text" class ="form-control" [(ngModel)]="email" name="email" required>
-                    </div>
-                    <hr>
-                    <div class="col-sm-12 col-md-4 formgroup">
-                        <button type = "submit" class="bnt btn-success">Restracja</button>
-                        <button type = "button" class="btn btn-primary" (click)="onClear()">Wyczyść</button>
-                     </div>
-                     <div class="col-sm-12 col-md-4 formgroup">
-                
-                     </div>
-            </div>
+                        
+                    
+                </fieldset>
+            
             </form>
         </div>
     </div>
-</body>
