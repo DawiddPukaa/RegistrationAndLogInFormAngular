@@ -1,37 +1,58 @@
-<p>signup-form works!</p>
-
-     <div class="container">
+    <div class="container">
         <div class="jumbotron">
             <h1>Restracja</h1>
-            <form >
-               <fieldset> 
+            <form  novalidate
+            [formGroup]="myform"
+            (ngSubmit)="onSubmit()"
+            >
+
+               <fieldset formGroupName="name"> 
                     <div>
-                        <div class="form-group">
+                        <div class="form-group"
+                         [ngClass]="{
+                            'has-danger': email.invalid && (email.dirty || email.touched),
+                            'has-success': email.valid && (email.dirty || email.touched)
+                          }">
                             <label for="exampleInputEmail1">E-mail</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="E-mail">
-                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                            <input type="email" class="form-control" id="exampleInputEmail" formControlName="email" placeholder="E-mail" required>
+                            
+                            <div class="form-control-feedback"
+                                *ngIf="email.errors && (email.dirty || email.touched)">
+                                 <p *ngIf="email.errors.required">Email is required</p>
+                             </div>
+
+      <!--
+        <pre>Valid? {{ myform.controls.name.controls.email.valid }}</pre>
+        <pre>Dirty? {{ myform.controls.name.controls.email.dirty }}</pre>
+      -->
                         </div> 
                     </div>
                     <div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Nazwa Użytkownika</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nazwa Użytkownika">
-                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                        </div>
+                            <input type="text" class="form-control" id="exampleInputNick" formControlName="nickname" placeholder="Nazwa Użytkownika" required>
+                            <div class="form-control-feedback"
+                                *ngIf="nickname.errors && (nickname.dirty || nickname.touched)">
+                                <p *ngIf="nickname.errors.required">Nickname is required</p>
+                            </div>                       
+                     </div>
                     </div>
                     <div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Hasło</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Hasło">
-                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                            <input type="password" class="form-control" id="exampleInputPassword" formControlName="password" placeholder="Hasło" required>
+                            <div class="form-control-feedback"
+                                *ngIf="password.errors && (password.dirty || password.touched)">
+                                <p *ngIf="password.errors.required">Password is required</p>
+                            </div>  
                         </div>
                     </div>
                     
                     <div>
-                        <div><button type="button" class="btn btn-primary btn-lg btn-block">Załóż Konto</button></div>
+                        <div><button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button></div>
                     </div>
                     <div>
-                        <div><button type="button" class="btn btn-danger btn-lg btn-block">Reset</button></div>
+                        <div><button (click)="onClear()"  type="button" class="btn btn-danger btn-lg btn-block">Reset</button></div>
                     </div> 
                         
                     

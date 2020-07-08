@@ -1,6 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
-
+import {   NgModule, Component, Pipe, OnInit } from '@angular/core';
+import { ReactiveFormsModule, FormsModule, FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
+import {BrowserModule} from '@angular/platform-browser';
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 
 @Component({
   selector: 'app-signup-form',
@@ -8,26 +9,43 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./signup-form.component.css']
 })
 export class SignupFormComponent implements OnInit{
-public email: any;
-public nickname: any;
-public password: any;
+public  myform: FormGroup;
+public email: FormControl;
+public nickname: FormControl;
+public password: FormControl;
 title: string;
-@ViewChild('f', {static: false}) regform: NgForm;
   constructor() { }
-  onSubmit(form: NgForm){
-    console.log('Nazwa Gracza: ' + form.value.nickname);
-    console.log('Hasło: ' + form.value.password);
-    console.log('Email: ' + form.value.email);
+  onSubmit(){
+    if (this.myform.valid){
+      console.log('Form Submitted');
+    }
   }
   onClear(){
-    this.nickname.reset();
-    this.password.reset();
-    this.email.reset();
+    this.myform.reset();
   }
-  ngOnInit(): void {
-  }
+  ngOnInit() {
+    this.createFormControls();
+    this.createForm();
+    }
+    createFormControls(){
+      this.nickname = new FormControl('', Validators.required);
+      this.password = new FormControl('', Validators.required);
+      this.email = new FormControl('', [ Validators.required,
+        Validators.pattern('[^ @]*@[^ @]*')
+       ]);
+      this.password = new FormControl('', [ Validators.required,
+      Validators.minLength(8)]);
+    }
 
-
+createForm(){
+  this.myform = new FormGroup({
+    name: new FormGroup({
+      email: this.email,
+      nickname: this.nickname,
+      password: this.password
+    })
+  });
+}
 
 
 
